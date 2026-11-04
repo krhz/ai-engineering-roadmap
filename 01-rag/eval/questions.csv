@@ -1,0 +1,44 @@
+id,question,expected,source,page,type
+q01,¿Con qué periodicidad se debe generar el documento soporte de pago de nómina electrónica?,mensual,resolucion_dian_0013_2021_nomina.pdf,8,literal
+q02,¿Cuál es el plazo para transmitir a la DIAN el documento soporte de pago de nómina electrónica?,10|diez,resolucion_dian_0013_2021_nomina.pdf,14,literal
+q03,"Si la DIAN presenta inconvenientes tecnológicos que impiden transmitir la nómina electrónica, ¿en qué plazo se debe transmitir una vez se restablezca el servicio?",48|cuarenta y ocho,resolucion_dian_0013_2021_nomina.pdf,17,literal
+q04,"Si el inconveniente tecnológico es del empleador, ¿qué plazo tiene para transmitir la nómina electrónica y qué debe conservar?",48|cuarenta y ocho,resolucion_dian_0013_2021_nomina.pdf,18,literal
+q05,"En el calendario para sujetos no obligados a expedir factura electrónica, ¿cuál es la fecha máxima para iniciar la transmisión de la nómina electrónica?",31/05/2022|31 de mayo de 2022,resolucion_dian_0013_2021_nomina.pdf,12,literal
+q06,"Bajo el calendario de implementación permanente, ¿cuánto plazo tienen los nuevos sujetos obligados para habilitarse y transmitir la nómina electrónica?",dos|2,resolucion_dian_0013_2021_nomina.pdf,11,literal
+q07,¿Pueden los sujetos del calendario 3 (no obligados a facturar) implementar la nómina electrónica de manera anticipada?,no aplica|no pueden|no,resolucion_dian_0013_2021_nomina.pdf,13,literal
+q08,¿Qué código NIE identifica el valor pagado por teletrabajo en la nómina electrónica?,NIE158,resolucion_dian_0013_2021_nomina.pdf,73,codigo
+q09,¿Qué algoritmo se usa para calcular el CUNE de la nómina electrónica?,SHA-?384,resolucion_dian_0013_2021_nomina.pdf,276,codigo
+q10,¿Qué campos se concatenan para calcular el CUNE?,NumNE.*FecNE.*TipAmb|Software-?Pin,resolucion_dian_0013_2021_nomina.pdf,276,codigo
+q11,¿Se debe soportar con nómina electrónica el apoyo de sostenimiento que se paga a un aprendiz con contrato de aprendizaje?,no,concepto_dian_000589_2021_nomina.pdf,5,literal
+q12,"Según la DIAN, ¿con qué criterio se reportan las cesantías en el documento soporte de nómina electrónica?",devengo,concepto_dian_000878_2022_nomina.pdf,2,literal
+q13,¿Por qué valor se incluyen las prestaciones sociales de reconocimiento anual en la nómina electrónica?,total reconocido,concepto_dian_000878_2022_nomina.pdf,2,literal
+q14,¿Hay que generar documento soporte de nómina electrónica para el reembolso de gastos que el trabajador pagó a nombre del empleador?,no,concepto_dian_001268_2021_nomina.pdf,4,literal
+q15,¿Cómo se reportan en la nómina electrónica los pagos en especie como alimentación u hospedaje que se derivan de la relación laboral?,devengad,concepto_dian_001268_2021_nomina.pdf,3,literal
+q16,¿En qué se diferencian las notas de ajuste del documento soporte de pago de nómina electrónica?,errores aritm[eé]ticos|ajust|corregir,concepto_dian_0311_2021_nomina.pdf,7,literal
+q17,¿Cuál es el primer paso que debe hacer un sujeto obligado para empezar con la nómina electrónica?,habilitaci[oó]n,concepto_dian_0311_2021_nomina.pdf,4,literal
+q18,¿Qué valor debe llevar el atributo schemeName del UUID para indicar el algoritmo del CUFE?,CUFE-SHA384,anexo_tecnico_factura_electronica_v1_9.pdf,572,codigo
+q19,¿Qué campos se concatenan para calcular el CUFE de una factura electrónica?,ClTec|clave t[eé]cnica,anexo_tecnico_factura_electronica_v1_9.pdf,551,codigo
+q20,¿Qué cambia entre la fórmula del CUFE y la del CUDE?,Software-?PIN,anexo_tecnico_factura_electronica_v1_9.pdf;anexo_tecnico_factura_electronica_v1_9.pdf,551;555,combinada
+q21,¿Cuál es el código del evento ApplicationResponse de acuse de recibo de la factura electrónica?,030,anexo_tecnico_factura_electronica_v1_9.pdf,273,codigo
+q22,¿Cuál es el código del evento de aceptación tácita de la factura electrónica?,034,anexo_tecnico_factura_electronica_v1_9.pdf,273,codigo
+q23,¿Cuáles son los tipos de documento UBL que usa la factura electrónica?,AttachedDocument,anexo_tecnico_factura_electronica_v1_9.pdf,14,literal
+q24,¿Para qué se usa la nota crédito tipo 22?,sin referencia,anexo_tecnico_factura_electronica_v1_9.pdf,573,codigo
+q25,¿Cuántos días hábiles tiene el adquirente para aceptar o reclamar la factura antes de que opere la aceptación tácita?,3|tres,anexo_tecnico_factura_electronica_v1_9.pdf;concepto_dian_000361_2022_radian.pdf,271;3,combinada
+q26,¿Qué información debe contener el código QR de la representación gráfica de la factura electrónica?,CUFE,anexo_tecnico_factura_electronica_v1_9.pdf,564,literal
+q27,¿Cuál es el código del evento de endoso en propiedad en RADIAN?,037,anexo_tecnico_radian_v1_0.pdf,40,codigo
+q28,¿Qué códigos de evento tienen el endoso en garantía y el endoso en procuración en RADIAN?,038.*039,anexo_tecnico_radian_v1_0.pdf,40,codigo
+q29,¿Qué evento de RADIAN tiene el código 036?,inscripci[oó]n,anexo_tecnico_radian_v1_0.pdf,40,codigo
+q30,"¿Si una factura electrónica no se registra en RADIAN, deja de ser título valor?",no impide,concepto_dian_000625_2021_radian.pdf;concepto_dian_000361_2022_radian.pdf,2;3,combinada
+q31,¿Qué requisitos se validan para inscribir una factura electrónica como título valor en RADIAN?,acuse de recibo,concepto_dian_000361_2022_radian.pdf,2,literal
+q32,¿Qué código de evento corresponde al requisito de acuse de recibo que exige el artículo 7 de la Resolución 000015 de 2021 para inscribir la factura en RADIAN?,030,concepto_dian_000361_2022_radian.pdf;anexo_tecnico_factura_electronica_v1_9.pdf,2;273,combinada
+q33,¿Es obligatoria la representación gráfica de la factura electrónica de venta?,opcional,concepto_dian_000905_2021_radian.pdf,4,literal
+q34,¿A más tardar cuándo debía estar disponible RADIAN según la Resolución 000037 de 2021?,agosto de 2021,concepto_dian_000905_2021_radian.pdf,5,literal
+q35,¿Dónde se puede consultar una factura electrónica validada por la DIAN usando el CUFE?,catalogo-?vpfe,concepto_dian_000905_2021_radian.pdf,8,literal
+q36,¿Quiénes son los sujetos obligados al anexo técnico de documento soporte?,no obligado a expedir factura|no obligados a facturar,anexo_tecnico_documento_soporte_v1_0.pdf,9,literal
+q37,¿Qué valor de InvoiceTypeCode identifica al documento soporte electrónico?,05,anexo_tecnico_documento_soporte_v1_0.pdf,250,codigo
+q38,¿Qué algoritmo hash comparten el CUFE de la factura electrónica y el CUNE de la nómina electrónica?,SHA-?384,anexo_tecnico_factura_electronica_v1_9.pdf;resolucion_dian_0013_2021_nomina.pdf,572;276,combinada
+q39,¿Cuál es el valor de la UVT para 2026?,NO_SE,,,sin_respuesta
+q40,¿Cuál es el salario mínimo legal vigente en Colombia para 2026?,NO_SE,,,sin_respuesta
+q41,¿Cuántas horas semanales es la jornada máxima legal según la Ley 2101 de 2021?,NO_SE,,,sin_respuesta
+q42,¿Cuál es el recargo dominical que fija la reforma laboral de la Ley 2466 de 2025?,NO_SE,,,sin_respuesta
+q43,¿Qué proveedores tecnológicos de facturación electrónica hay en Barranquilla?,NO_SE,,,sin_respuesta

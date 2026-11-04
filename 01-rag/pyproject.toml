@@ -1,0 +1,35 @@
+[project]
+name = "01-rag"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "@krhz", email = "khernandezdev@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "datasets>=5.1.0",
+    "google-genai>=2.34.0",
+    "numpy>=2.5.4",
+    "openai>=3.45.0",
+    "pandas>=3.1.0",
+    "pgvector>=0.5.1",
+    "psycopg[binary]>=3.3.8",
+    "pydantic>=2.14.2",
+    "pymupdf>=2.1",
+    "pytest>=9.2.0",
+    "python-docx>=1.2.0",
+    "python-dotenv>=1.2.4",
+    "sentence-transformers>=6.2.0",
+    "tiktoken>=0.14.0",
+]
+
+[project.scripts]
+01-rag = "_01_rag:main"
+
+[tool.uv.build-backend]
+module-name = "_01_rag"
+
+[build-system]
+requires = ["uv_build>=0.13.7,<0.14.0"]
+build-backend = "uv_build"

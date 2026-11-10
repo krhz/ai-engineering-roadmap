@@ -17,7 +17,7 @@ with psycopg.connect(os.environ["DATABASE_URL"]) as conn:
 # llm = OpenAI(api_key=os.environ["GEMINI_API_KEY"], base_url=os.environ["LLM_BASE_URL"])
 llm = OpenAI(
     base_url=os.environ["LLM_BASE_URL"],
-    api_key=os.environ["GROK_API_KEY"],
+    api_key=os.environ["LLM_API_KEY"],
     max_retries=5,   # por defecto son 2, con espera exponencial
     timeout=60,
 )

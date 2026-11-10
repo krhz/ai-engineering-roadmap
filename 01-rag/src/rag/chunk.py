@@ -15,7 +15,7 @@ def n_tokens(text: str) -> int:
 
 @dataclass
 class Chunk:
-    chunk_id: str  # ej. "resolucion_000042-p3-c1"
+    chunk_id: str  # ej. "campanas_2023-p812-c0" (p = fila de la ficha)
     source: str
     page: int
     text: str
@@ -74,7 +74,8 @@ def save(chunks: list[Chunk], path: str) -> None:
 
 if __name__ == "__main__":
     pages = load("my_docs")
-    configs = [("fixed", 256, 0), ("fixed", 400, 50), ("fixed", 1024, 50), ("paragraph", 400, 50)]
+    # fichas de ~170 tokens: 400 = ficha completa; 128 = cortada a ciegas; párrafos 120 = por sección
+    configs = [("fixed", 400, 50), ("fixed", 128, 0), ("paragraph", 120, 0)]
     for name, size, overlap in configs:
         fn = chunk_fixed if name == "fixed" else chunk_by_paragraph
         chunks = fn(pages, size, overlap)

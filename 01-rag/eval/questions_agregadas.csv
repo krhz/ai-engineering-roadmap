@@ -1,0 +1,6 @@
+id,question,expected,type
+a01,¿Cuántas campañas a alcaldía hubo en Atlántico?,142,agregada
+a02,¿Cuánto gastaron en total todas las campañas a gobernación?,123.652.783.223,agregada
+a03,¿Qué campaña a la alcaldía de Barranquilla reportó más gastos?,Alejandro Char Chaljub,agregada
+a04,¿Cuántas campañas a alcaldía reportaron gastos por encima del tope?,87,agregada
+a05,¿Cuál fue el gasto promedio de las campañas a alcaldía en Antioquia?,68.295.015,agregada

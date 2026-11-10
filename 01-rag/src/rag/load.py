@@ -1,7 +1,9 @@
 from dataclasses import dataclass
 from pathlib import Path
+import unicodedata
 
 import docx  # python-docx
+import pandas as pd
 import pymupdf  # PyMuPDF
 
 
@@ -17,10 +19,15 @@ def load(folder: str) -> list[Page]:
     pages: list[Page] = []
     for path in sorted(Path(folder).rglob("*")):
         ext = path.suffix.lower()
-        if ext == ".pdf":
+        if ext == ".csv":  # fichas: una "página" por fila, con columnas fila y texto
+            df = pd.read_csv(path, dtype=str)
+            for row in df.itertuples():
+                pages.append(Page(path.stem, path.name, int(row.fila), row.texto))
+        elif ext == ".pdf":
             with pymupdf.open(path) as pdf:
                 for number, pdf_page in enumerate(pdf, start=1):
-                    text = pdf_page.get_text().strip()
+                    # NFKC convierte espacios no separables (\xa0) y similares en caracteres normales
+                    text = unicodedata.normalize("NFKC", pdf_page.get_text()).strip()
                     if text:  # páginas vacías o escaneadas no traen texto
                         pages.append(Page(path.stem, path.name, number, text))
         elif ext == ".docx":

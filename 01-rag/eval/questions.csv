@@ -1,36 +1,36 @@
 id,question,expected,source,page,type
-q01,¿Cada cuánto se genera la nómina electrónica si pago a mis empleados cada quincena?,mensual,resolucion_dian_0013_2021_nomina.pdf,8,literal
-q02,¿Hasta qué día del mes siguiente tengo para transmitir la nómina electrónica a la DIAN?,10,resolucion_dian_0013_2021_nomina.pdf,14,literal
-q03,"Si el servicio de la DIAN se cae y no puedo enviar la nómina, ¿cuántas horas tengo para mandarla cuando vuelva?",48,resolucion_dian_0013_2021_nomina.pdf,17,literal
-q04,"Si mi empresa no está obligada a facturar electrónicamente, ¿cuál era la fecha límite para empezar a transmitir la nómina electrónica?",31/05/2022,resolucion_dian_0013_2021_nomina.pdf,12,literal
-q05,¿Qué trámite hay que hacer primero ante la DIAN para poder emitir nómina electrónica?,habilitación,concepto_dian_0311_2021_nomina.pdf,4,literal
-q06,¿Qué dato que identifica la factura va dentro del código QR de la representación gráfica?,CUFE,anexo_tecnico_factura_electronica_v1_9.pdf,564,literal
-q07,"Además de Invoice, CreditNote y DebitNote, ¿qué otros tipos de documento UBL maneja la factura electrónica?",AttachedDocument,anexo_tecnico_factura_electronica_v1_9.pdf,14,literal
-q08,¿Para cuándo tenía que estar funcionando RADIAN según la Resolución 37 de 2021?,agosto de 2021,concepto_dian_000905_2021_radian.pdf,5,literal
-q09,¿A quién le aplica el anexo técnico del documento soporte?,no obligado,anexo_tecnico_documento_soporte_v1_0.pdf,9,literal
-q10,¿Qué eventos tiene que tener una factura para poder inscribirla como título valor en RADIAN?,acuse de recibo,concepto_dian_000361_2022_radian.pdf,2,literal
-q11,¿Cómo se reportan en la nómina electrónica las cesantías y las prestaciones sociales que se reconocen una vez al año?,devengo,concepto_dian_000878_2022_nomina.pdf,2,combinada
-q12,"Si pago nómina quincenal, ¿cómo debo generar la nómina electrónica y hasta cuándo puedo transmitirla?",10,concepto_dian_0311_2021_nomina.pdf,2,combinada
-q13,"Si un empleado paga gastos de la empresa y luego se los reembolso, ¿lo trato igual que un pago en especie en la nómina electrónica?",especie,concepto_dian_001268_2021_nomina.pdf,4,combinada
-q14,"¿Hay que registrar todas las facturas en RADIAN para que sean título valor, o solo algunas?",no impide,concepto_dian_000625_2021_radian.pdf,2,combinada
-q15,"¿Cuánto tiempo tiene el comprador para reclamar antes de que la factura se dé por aceptada, y qué pasa si nunca se registra en RADIAN?",días hábiles,concepto_dian_000361_2022_radian.pdf,3,combinada
-q16,"Si ya registré la aceptación tácita de una factura, ¿qué código tiene ese evento y cuál tiene el acuse de recibo?",034,anexo_tecnico_factura_electronica_v1_9.pdf,273,combinada
-q17,¿Qué códigos usan en RADIAN el endoso en garantía y el endoso en procuración?,039,anexo_tecnico_radian_v1_0.pdf,40,combinada
-q18,¿Por qué el apoyo de sostenimiento de un aprendiz SENA no va en la nómina electrónica?,relación laboral,concepto_dian_000589_2021_nomina.pdf,5,combinada
-q19,"En un cobro judicial, ¿sirve la representación gráfica de la factura electrónica, o qué documento cuenta?",opcional,concepto_dian_000905_2021_radian.pdf,4,combinada
-q20,¿Cuántos calendarios de implementación de nómina electrónica hay y a quiénes se refiere 'otros sujetos'?,tres calendarios,concepto_dian_0311_2021_nomina.pdf,5,combinada
-q21,¿Con qué código NIE reporto lo que le pago a un trabajador por teletrabajo?,NIE158,resolucion_dian_0013_2021_nomina.pdf,73,codigo
-q22,¿Qué valor va en schemeName del UUID de una factura electrónica?,CUFE-SHA384,anexo_tecnico_factura_electronica_v1_9.pdf,572,codigo
-q23,¿Qué campo del CUFE corresponde a la clave técnica del rango de numeración?,ClTec,anexo_tecnico_factura_electronica_v1_9.pdf,551,codigo
-q24,¿Cuál es el código del evento de acuse de recibo de una factura electrónica?,030,anexo_tecnico_factura_electronica_v1_9.pdf,273,codigo
-q25,¿Qué código tiene el endoso en propiedad en RADIAN?,037,anexo_tecnico_radian_v1_0.pdf,40,codigo
-q26,¿Qué evento de RADIAN tiene el código 036?,inscripción,anexo_tecnico_radian_v1_0.pdf,40,codigo
-q27,¿Qué InvoiceTypeCode lleva el documento soporte electrónico?,05,anexo_tecnico_documento_soporte_v1_0.pdf,250,codigo
-q28,¿Qué tipo de nota crédito uso si no está asociada a ninguna factura?,22,anexo_tecnico_factura_electronica_v1_9.pdf,573,codigo
-q29,¿Qué dato usa el CUDE en lugar de la clave técnica del CUFE?,Software-PIN,anexo_tecnico_factura_electronica_v1_9.pdf,555,codigo
-q30,¿En qué página de la DIAN puedo consultar una factura con su CUFE?,vpfe.dian.gov.co,concepto_dian_000905_2021_radian.pdf,8,codigo
-q31,¿Cuál es el valor de la UVT para 2026?,NO_SE,,,sin_respuesta
-q32,¿Cuál es el salario mínimo en Colombia para 2026?,NO_SE,,,sin_respuesta
-q33,¿Cuántas horas a la semana es la jornada máxima según la Ley 2101 de 2021?,NO_SE,,,sin_respuesta
-q34,¿Qué recargo dominical fija la reforma laboral de 2025?,NO_SE,,,sin_respuesta
-q35,¿Qué proveedores tecnológicos de facturación electrónica hay en Barranquilla?,NO_SE,,,sin_respuesta
+q01,¿Cuánto gastó en total la campaña de Franquil Yurley Lopez Cruz a la alcaldía de Puerto Carreño?,136.972.971,campanas_2023.csv,1870,literal
+q02,¿Cuánta plata recibió German Martinez Cardenas para su campaña a la alcaldía de Mariquita?,953.000,campanas_2023.csv,1998,literal
+q03,¿Cuánto gastó en total la campaña de Daniel Alberto Sanchez Rivera a la alcaldía de Chiquinquirá?,69.968.558,campanas_2023.csv,988,literal
+q04,¿Cuánta plata recibió Gustavo Vergara Aviles para su campaña a la alcaldía de San José de Ure?,20.000.000,campanas_2023.csv,2138,literal
+q05,¿Cuánto gastó en total la campaña de Daniel Alberto Salas Gallego a la alcaldía de Abriaquí?,3.206.839,campanas_2023.csv,987,literal
+q06,¿Cuánta plata recibió Francisco Antonio Bermudez Espinosa para su campaña a la alcaldía de Melgar?,154.249.400,campanas_2023.csv,1816,literal
+q07,¿Cuánto gastó en total la campaña de Josue Manrique Murcia a la alcaldía de Gigante?,143.559.305,campanas_2023.csv,3408,literal
+q08,¿Cuánta plata recibió Julian David Sanabria Cardozo para su campaña a la alcaldía de Nilo?,22.678.750,campanas_2023.csv,3635,literal
+q09,¿Cuánto gastó en total la campaña de Mauricio Tobon Franco a la gobernación de Antioquia?,1.157.376.095,campanas_2023.csv,4447,literal
+q10,¿Cuánta plata recibió Cristian Halaby Fernandez para su campaña a la gobernación de Antioquia?,332.014.764,campanas_2023.csv,939,literal
+q11,"En la elección de alcaldía de Chitaga (Norte de Santander), ¿quién gastó más en campaña: Paulo Alexander Paez Mateus o Carlos Alberto Quintero Rivera?",Carlos Alberto Quintero Rivera,campanas_2023.csv,609,combinada
+q12,"En la elección de alcaldía de Betéitiva (Boyacá), ¿quién gastó más en campaña: Ricardo Cristancho Fernandez o Gerardo Salamanca Rincon?",Ricardo Cristancho Fernandez,campanas_2023.csv,5133,combinada
+q13,"En la elección de alcaldía de Honda (Tolima), ¿quién gastó más en campaña: Ronald Gustavo Suarez Cruz o Yira Marcia Montero Murcia?",Yira Marcia Montero Murcia,campanas_2023.csv,5845,combinada
+q14,"En la elección de alcaldía de La Belleza (Santander), ¿quién gastó más en campaña: Nestor Andres Rojas Garcia o Yineth Narioth Tellez Perez?",Yineth Narioth Tellez Perez,campanas_2023.csv,5843,combinada
+q15,"En la elección de alcaldía de Vegachí (Antioquia), ¿quién gastó más en campaña: Sebastian Velez Sierra o Gloria Amparo Mejia Mejia?",Sebastian Velez Sierra,campanas_2023.csv,5378,combinada
+q16,"En la elección de alcaldía de Montelíbano (Córdoba), ¿quién gastó más en campaña: Jose David Nader Ramirez o Jorge Emilio Martinez Sanchez?",Jose David Nader Ramirez,campanas_2023.csv,3167,combinada
+q17,"En la elección de alcaldía de Carcasí (Santander), ¿quién gastó más en campaña: Marco Antonio Garcia Espinel o Gerardo Harvey Duran Caceres?",Gerardo Harvey Duran Caceres,campanas_2023.csv,1966,combinada
+q18,"En la elección de alcaldía de Nariño (Nariño), ¿quién gastó más en campaña: Roberto Carlos Betancourt Ramos o Otto Minelly Obando Villota?",Roberto Carlos Betancourt Ramos,campanas_2023.csv,5170,combinada
+q19,"En la elección de alcaldía de San Carlos (Antioquia), ¿quién gastó más en campaña: Robinson De Jesus Ramirez Ramirez o Jhon Jaime Posada Gomez?",Robinson De Jesus Ramirez Ramirez,campanas_2023.csv,5184,combinada
+q20,"En la elección de alcaldía de Cumbal (Nariño), ¿quién gastó más en campaña: Jorge Luis Unigarro o Hector Andres Tapie Alpala?",Hector Andres Tapie Alpala,campanas_2023.csv,2170,combinada
+q21,¿Cuánto invirtió Camilo Andres Silva Motta en publicidad y propaganda en su campaña a la alcaldía de Arcabuco?,5.270.000,campanas_2023.csv,554,codigo
+q22,¿Cuánto invirtió Victor Jadir Perez Mendez en transporte en su campaña a la alcaldía de Agrado?,2.000.000,campanas_2023.csv,5527,codigo
+q23,¿Cuánto invirtió Dwisht Pino Peña en eventos y actos públicos en su campaña a la alcaldía de Natagaima?,39.200.000,campanas_2023.csv,1294,codigo
+q24,¿Cuánto invirtió Fabian Camilo Fuentes Cortes en administración de la campaña en su campaña a la alcaldía de Cumaral?,15.710.350,campanas_2023.csv,1682,codigo
+q25,¿Cuánto invirtió Diego Eduardo Cuenca Cabrera en materiales y publicaciones en su campaña a la alcaldía de Yaguará?,1.303.999,campanas_2023.csv,1202,codigo
+q26,¿Cuánto invirtió Jhonathan Marin Cano en publicidad y propaganda en su campaña a la alcaldía de Alcala?,10.613.500,campanas_2023.csv,2831,codigo
+q27,¿Cuánto invirtió Jorge Antonio Chavarro Pulido en transporte en su campaña a la alcaldía de Anolaima?,1.600.000,campanas_2023.csv,2974,codigo
+q28,¿Cuánto invirtió Luis Esteban Villarroya Carmona en eventos y actos públicos en su campaña a la alcaldía de Coveñas?,26.204.000,campanas_2023.csv,4025,codigo
+q29,¿Cuánto invirtió Carlos Andres Morales Quiroga en administración de la campaña en su campaña a la alcaldía de Landázuri?,7.500.000,campanas_2023.csv,648,codigo
+q30,¿Cuánto invirtió Fabian Andres Valencia en materiales y publicaciones en su campaña a la alcaldía de Santander de Quilichao?,2.793.000,campanas_2023.csv,1680,codigo
+q31,¿Cuánto gastó la campaña al Concejo de Barranquilla del Partido Liberal en 2023?,NO_SE,,,sin_respuesta
+q32,¿Cuánto costó la campaña al Senado de 2022 del Pacto Histórico?,NO_SE,,,sin_respuesta
+q33,¿Cuánto gastaron los candidatos a la alcaldía de Medellín en las elecciones de 2019?,NO_SE,,,sin_respuesta
+q34,¿Quién ganó la alcaldía de Cartagena en 2023?,NO_SE,,,sin_respuesta
+q35,¿Cuánto gastaron las campañas a la Asamblea de Antioquia en 2023?,NO_SE,,,sin_respuesta

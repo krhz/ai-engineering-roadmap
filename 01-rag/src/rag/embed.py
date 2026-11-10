@@ -1,6 +1,6 @@
+import argparse
 import json
 import os
-import sys
 import time
 from pathlib import Path
 
@@ -11,7 +11,7 @@ from google import genai
 from google.genai import errors, types
 
 load_dotenv()
-DIM = 768  # pgvector indexa hasta 2.000 dimensiones; 768 da buen balance
+DIM = 768  # dimensiones que pedimos a Gemini; e5-small siempre da 384
 
 
 def normalize(m: np.ndarray) -> np.ndarray:
@@ -28,7 +28,7 @@ class GeminiEmbedder:
         out: list[list[float]] = []
         for i in range(0, len(texts), 50):  # lotes de 50 textos
             batch = texts[i : i + 50]
-            for attempt in range(5):
+            for attempt in range(8):
                 try:
                     r = self.client.models.embed_content(
                         model="gemini-embedding-001",
@@ -36,12 +36,12 @@ class GeminiEmbedder:
                         config=types.EmbedContentConfig(task_type=task, output_dimensionality=DIM),
                     )
                     out.extend(e.values for e in r.embeddings)
-                    print(f"  gemini: {len(out)}/{len(texts)}", flush=True)
                     break
                 except errors.APIError as e:
-                    if e.code == 429 and attempt < 7:  # límite del tier gratuito: espera y reintenta
-                        print(f"  429, espero {min(60, 5 * 2**attempt)}s...", flush=True)
-                        time.sleep(min(60, 5 * 2**attempt))
+                    if e.code == 429 and attempt < 7:  # límite por minuto del tier gratuito
+                        wait = min(60, 5 * 2**attempt)
+                        print(f"  429, espero {wait}s...", flush=True)
+                        time.sleep(wait)
                         continue
                     raise
         return normalize(np.array(out, dtype=np.float32))
@@ -63,24 +63,43 @@ class LocalEmbedder:
 
     def docs(self, texts: list[str]) -> np.ndarray:
         # e5 exige el prefijo "passage: " en documentos y "query: " en preguntas
-        return self.model.encode([f"passage: {t}" for t in texts], normalize_embeddings=True, show_progress_bar=True)
+        return self.model.encode([f"passage: {t}" for t in texts], normalize_embeddings=True)
 
     def query(self, text: str) -> np.ndarray:
         return self.model.encode(f"query: {text}", normalize_embeddings=True)
-
 
 
 def load_chunks(path: str) -> list[dict]:
     return [json.loads(line) for line in open(path, encoding="utf-8")]
 
 
-def embed_cached(embedder, chunks: list[dict], chunks_path: str) -> np.ndarray:
-    cache = Path(f"data/emb_{embedder.name}_{Path(chunks_path).stem}.npy")
+def embed_cached(embedder, chunks: list[dict], chunks_path: str, tag: str = "", block: int = 200) -> np.ndarray:
+    cache = Path(f"data/emb_{embedder.name}_{Path(chunks_path).stem}{tag}.npy")
     if cache.exists():
         return np.load(cache)
-    matrix = embedder.docs([c["text"] for c in chunks])
-    np.save(cache, matrix)
-    return matrix
+    partial = Path(str(cache).replace(".npy", ".partial.npy"))
+    done = np.load(partial) if partial.exists() else None  # retoma si se cayó antes
+    texts = [c["text"] for c in chunks]
+    for i in range(0 if done is None else len(done), len(texts), block):
+        part = embedder.docs(texts[i : i + block])
+        done = part if done is None else np.vstack([done, part])
+        np.save(partial, done)  # guarda el avance cada `block` chunks
+        print(f"  {embedder.name}: {len(done)}/{len(texts)}", flush=True)
+    np.save(cache, done)
+    partial.unlink()
+    return done
+
+
+def subset(chunks: list[dict], qs: pd.DataFrame, window: int = 5) -> list[dict]:
+    """Docs cortos completos + páginas cerca de cada respuesta. Para comparar con Gemini sin agotar la cuota."""
+    gold: dict[str, list[int]] = {}
+    for q in qs.itertuples():
+        gold.setdefault(q.source, []).append(int(q.page))
+    last: dict[str, int] = {}
+    for c in chunks:
+        last[c["source"]] = max(last.get(c["source"], 0), c["page"])
+    return [c for c in chunks
+            if last[c["source"]] <= 20 or any(abs(c["page"] - p) <= window for p in gold.get(c["source"], []))]
 
 
 def hit_at_5(embedder, matrix: np.ndarray, chunks: list[dict], qs: pd.DataFrame) -> int:
@@ -93,10 +112,20 @@ def hit_at_5(embedder, matrix: np.ndarray, chunks: list[dict], qs: pd.DataFrame)
 
 
 if __name__ == "__main__":
-    chunks_path = sys.argv[1]  # ej. data/chunks_fixed_400_50.jsonl
-    chunks = load_chunks(chunks_path)
+    ap = argparse.ArgumentParser()
+    ap.add_argument("chunks_path")  # ej. data/chunks_fixed_400_50.jsonl
+    ap.add_argument("--models", default="e5", help="e5, gemini o e5,gemini")
+    ap.add_argument("--subset", action="store_true", help="solo páginas cerca de las respuestas")
+    a = ap.parse_args()
+
+    chunks = load_chunks(a.chunks_path)
     qs = pd.read_csv("eval/questions.csv", dtype=str).fillna("")
     qs = qs[qs.expected != "NO_SE"]
-    for embedder in (GeminiEmbedder(), LocalEmbedder()):
-        matrix = embed_cached(embedder, chunks, chunks_path)
+    tag = "_subset" if a.subset else ""
+    if a.subset:
+        chunks = subset(chunks, qs)
+    print(f"{len(chunks)} chunks")
+    for name in a.models.split(","):
+        embedder = GeminiEmbedder() if name == "gemini" else LocalEmbedder()
+        matrix = embed_cached(embedder, chunks, a.chunks_path, tag)
         print(f"{embedder.name}: {hit_at_5(embedder, matrix, chunks, qs)}/{len(qs)} preguntas con la página correcta en el top-5")

@@ -69,7 +69,8 @@ def render(answer: Answer, hits: list[tuple]) -> str:
 _state: dict = {}
 
 
-def rag(question: str, mode: str = "rerank") -> tuple[Answer, list[tuple]]:
+def rag(question: str, mode: str | None = None) -> tuple[Answer, list[tuple]]:
+    mode = mode or os.environ.get("RAG_MODE", "rerank")    
     if not _state:  # conecta y carga modelos una sola vez
         _state.update(conn=connect(), embedder=LocalEmbedder(), reranker=Reranker())
     hits = search(_state["conn"], _state["embedder"], question, mode, k=5, reranker=_state["reranker"])
